@@ -1,6 +1,6 @@
 package com.soundcloud.periskop.client
 
-import java.time.LocalDateTime
+import java.time.ZonedDateTime
 import java.util.UUID
 
 import scala.util.hashing.MurmurHash3
@@ -18,7 +18,7 @@ case class ExceptionWithContext
   throwable: Throwable,
   severity: Severity,
   uuid: UUID = UUID.randomUUID,
-  timestamp: LocalDateTime = LocalDateTime.now,
+  timestamp: ZonedDateTime = ZonedDateTime.now,
   httpContext: Option[HttpContext] = None
 ) {
   val className: String = throwable.getClass.getName
