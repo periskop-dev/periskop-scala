@@ -1,6 +1,14 @@
 # Periskop Scala Client
 
-Low level Scala Client for [Periskop](https://github.com/soundcloud/periskop)
+[Periskop](https://github.com/soundcloud/periskop) requires collecting and aggregating exceptions on the client side,
+as well as exposing them via an HTTP endpoint using a well define format.
+
+This library provides both of these capabilities.
+
+## Usage
+
+TBD
+
 
 ## Contributing
 
