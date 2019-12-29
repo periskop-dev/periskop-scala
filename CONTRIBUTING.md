@@ -2,11 +2,7 @@
 
 ## Setup
 
-TBD
-
-## Testing
-
-TBD
+Clone this project and run `make test`. If all the tests pass, you are ready to start hacking.
 
 ## Contribution Policy
 
