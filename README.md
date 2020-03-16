@@ -1,7 +1,6 @@
 # Periskop Scala Client
 
 [![Build Status](https://api.cirrus-ci.com/github/soundcloud/periskop-scala.svg)](https://cirrus-ci.com/github/soundcloud/periskop-scala)
-
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.soundcloud/periskop-scala_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.soundcloud/periskop-scala_2.12)
 
 [Periskop](https://github.com/soundcloud/periskop) requires collecting and aggregating exceptions on the client side,
