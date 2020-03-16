@@ -1,5 +1,7 @@
 # Periskop Scala Client
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.soundcloud/periskop-scala_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.soundcloud/periskop-scala_2.12)
+
 [Periskop](https://github.com/soundcloud/periskop) requires collecting and aggregating exceptions on the client side,
 as well as exposing them via an HTTP endpoint using a well defined format.
 
