@@ -29,11 +29,13 @@ class ExceptionExporter(exceptionCollector: ExceptionCollector) {
     "cause" -> Option(t.getCause).map(jsonException)
   )
 
-  private def jsonHttpContext(httpContext: HttpContext): Map[String, Any] = Map(
-    "request_method" -> httpContext.requestMethod,
-    "request_url" -> httpContext.requestUrl,
-    "request_headers" -> httpContext.requestHeaders
-  )
+  private def jsonHttpContext(httpContext: HttpContext): Map[String, Any] =
+    Map(
+      "request_method" -> httpContext.requestMethod,
+      "request_url" -> httpContext.requestUrl,
+      "request_headers" -> httpContext.requestHeaders,
+      "request_body" -> httpContext.requestBody
+    )
 
   private def jsonErrorWithContext(e: ExceptionWithContext): Map[String, Any] = Map(
     "error" -> jsonException(e.throwable),
