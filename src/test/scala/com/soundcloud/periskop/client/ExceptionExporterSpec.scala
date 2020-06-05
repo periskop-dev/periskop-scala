@@ -45,8 +45,25 @@ class ExceptionExporterSpec extends Specification with Mockito {
             httpContext = Some(
               HttpContext(
                 requestMethod = "POST",
-                requestHeaders = Map("User-Agent" -> "Foobrowser", "Accept" -> "text/html"),
-                requestUrl = "http://foo.com/boo"
+                requestHeaders =
+                  Map("User-Agent" -> "Foobrowser", "Accept" -> "text/html"),
+                requestUrl = "http://foo.com/boo",
+                requestBody = Some("body")
+              )
+            )
+          ),
+          ExceptionWithContext(
+            throwable = new FakeException("foo1", new FakeException("foo1parent")),
+            severity = Severity.Error,
+            uuid = uuid1,
+            timestamp = timestamp1,
+            httpContext = Some(
+              HttpContext(
+                requestMethod = "POST",
+                requestHeaders =
+                  Map("User-Agent" -> "Foobrowser", "Accept" -> "text/html"),
+                requestUrl = "http://foo.com/boo",
+                requestBody = None
               )
             )
           ),
@@ -114,7 +131,39 @@ class ExceptionExporterSpec extends Specification with Mockito {
           |            "request_headers": {
           |              "User-Agent": "Foobrowser",
           |              "Accept": "text/html"
+          |            },
+          |            "request_body": "body"
+          |          }
+          |        },
+          |        {
+          |          "error": {
+          |            "class": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException",
+          |            "message": "foo1",
+          |            "stacktrace": [
+          |              "kls.mthd(file:1)",
+          |              "kls.mthd(file:2)"
+          |            ],
+          |            "cause": {
+          |              "class": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException",
+          |              "message": "foo1parent",
+          |              "stacktrace": [
+          |                "kls.mthd(file:1)",
+          |                "kls.mthd(file:2)"
+          |              ],
+          |              "cause": null
           |            }
+          |          },
+          |          "severity": "error",
+          |          "uuid": "c3c24195-27ae-4455-ba5a-7b504a7699a4",
+          |          "timestamp": "2018-01-02T11:22:33.000Z",
+          |          "http_context": {
+          |            "request_method": "POST",
+          |            "request_url": "http://foo.com/boo",
+          |            "request_headers": {
+          |              "User-Agent": "Foobrowser",
+          |              "Accept": "text/html"
+          |            },
+          |            "request_body": null
           |          }
           |        },
           |        {

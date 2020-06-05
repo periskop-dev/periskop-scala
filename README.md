@@ -37,7 +37,8 @@ exceptionCollector.addWithContext(
     httpContext = Some(HttpContext(
       requestMethod = "GET",
       requestUrl = "http://example.com/path?foo=bar",
-      requestHeaders = Map("Accept" -> "text/plain")
+      requestHeaders = Map("Accept" -> "text/plain"),
+      requestBody = Some("body")
     )))
 )
 ```

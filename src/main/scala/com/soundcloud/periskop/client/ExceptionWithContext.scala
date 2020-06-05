@@ -8,7 +8,10 @@ import scala.util.hashing.MurmurHash3
 /**
   * Additional HTTP-related context for ExceptionWithContext.
   */
-case class HttpContext(requestMethod: String, requestUrl: String, requestHeaders: Map[String, String])
+case class HttpContext(requestMethod: String,
+                       requestUrl: String,
+                       requestHeaders: Map[String, String],
+                       requestBody: Option[String])
 
 /**
   * Wraps an exception with useful metadata.
