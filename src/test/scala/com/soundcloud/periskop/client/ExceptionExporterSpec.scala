@@ -36,6 +36,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
       ExceptionAggregate(
         totalCount = 3,
         severity = Severity.Error,
+        timestamp = timestamp1,
         latestExceptions = Queue(
           ExceptionWithContext(
             throwable = new FakeException("foo1", new FakeException("foo1parent")),
@@ -79,6 +80,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
       ExceptionAggregate(
         totalCount = 1,
         severity = Severity.Error,
+        timestamp = timestamp1,
         latestExceptions = Queue(
           ExceptionWithContext(
             throwable = new FakeException("bar1", stackTraceLine = 42),
@@ -103,6 +105,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
           |      "aggregation_key": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException@be63351f",
           |      "total_count": 3,
           |      "severity": "error",
+          |      "timestamp": "2018-01-02T11:22:33.000Z",
           |      "latest_errors": [
           |        {
           |          "error": {
@@ -187,6 +190,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
           |      "aggregation_key": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException@a3f533f8",
           |      "total_count": 1,
           |      "severity": "error",
+          |      "timestamp": "2018-01-02T11:22:33.000Z",
           |      "latest_errors": [
           |        {
           |          "error": {

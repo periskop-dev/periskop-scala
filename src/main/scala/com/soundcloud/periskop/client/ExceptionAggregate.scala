@@ -1,12 +1,15 @@
 package com.soundcloud.periskop.client
 
+import java.time.ZonedDateTime
+
 import scala.collection.immutable.Queue
 
 private[client] case class ExceptionAggregate
 (
   totalCount: Long = 0,
   severity: Severity = Severity.Error ,
-  latestExceptions: Queue[ExceptionWithContext] = Queue.empty
+  latestExceptions: Queue[ExceptionWithContext] = Queue.empty,
+  timestamp: ZonedDateTime = ZonedDateTime.now()
 ) {
     // limit memory consumption keep only N exceptions per aggregation key
     val maxExceptions = 10
