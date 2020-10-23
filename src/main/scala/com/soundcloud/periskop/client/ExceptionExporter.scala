@@ -49,6 +49,7 @@ class ExceptionExporter(exceptionCollector: ExceptionCollector) {
     "aggregation_key" -> aggregate.aggregationKey,
     "total_count" -> aggregate.totalCount,
     "severity" -> Severity.toString(aggregate.severity),
+    "createdAt" -> aggregate.createdAt.format(rfc3339TimeFormat),
     "latest_errors" -> aggregate.latestExceptions.map(jsonErrorWithContext)
   )
 
