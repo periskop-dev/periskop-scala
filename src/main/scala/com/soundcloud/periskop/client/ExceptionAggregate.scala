@@ -9,7 +9,7 @@ private[client] case class ExceptionAggregate
   totalCount: Long = 0,
   severity: Severity = Severity.Error ,
   latestExceptions: Queue[ExceptionWithContext] = Queue.empty,
-  timestamp: ZonedDateTime = ZonedDateTime.now()
+  createdAt: ZonedDateTime = ZonedDateTime.now()
 ) {
     // limit memory consumption keep only N exceptions per aggregation key
     val maxExceptions = 10
