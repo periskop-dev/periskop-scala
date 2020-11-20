@@ -1,3 +1,6 @@
+lazy val scala212 = "2.12.10"
+lazy val scala213 = "2.13.4"
+
 val versions = new {
   val specs2 = "4.7.0"
   val jackson = "2.10.1"
@@ -11,9 +14,10 @@ libraryDependencies ++= Seq(
   "org.specs2" %% "specs2-core" % versions.specs2 % "test",
   "org.specs2" %% "specs2-mock" % versions.specs2 % "test"
 )
+crossScalaVersions := Seq(scala212, scala213)
+scalaVersion := scala213
 
 // publishing to maven central
-
 ThisBuild / organization := "com.soundcloud"
 ThisBuild / organizationName := "SoundCloud"
 ThisBuild / organizationHomepage := Some(url("https://developers.soundcloud.com/"))

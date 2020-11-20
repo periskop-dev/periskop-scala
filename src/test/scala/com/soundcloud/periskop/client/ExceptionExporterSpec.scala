@@ -102,7 +102,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
       s"""|{
           |  "aggregated_errors": [
           |    {
-          |      "aggregation_key": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException@be63351f",
+          |      "aggregation_key": "${exceptionAggregates(0).latestExceptions.head.aggregationKey}",
           |      "total_count": 3,
           |      "severity": "error",
           |      "createdAt": "2018-01-02T11:22:33.000Z",
@@ -187,7 +187,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
           |      ]
           |    },
           |    {
-          |      "aggregation_key": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException@a3f533f8",
+          |      "aggregation_key": "${exceptionAggregates(1).latestExceptions.head.aggregationKey}",
           |      "total_count": 1,
           |      "severity": "error",
           |      "createdAt": "2018-01-02T11:22:33.000Z",

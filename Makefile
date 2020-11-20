@@ -1,4 +1,4 @@
 .PHONY: test
 
 test:
-	sbt test
+	sbt +test

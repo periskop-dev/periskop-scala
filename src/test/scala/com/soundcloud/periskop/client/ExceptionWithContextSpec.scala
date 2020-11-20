@@ -18,13 +18,13 @@ class ExceptionWithContextSpec extends Specification {
   }
 
   "aggregationKey is based on the class name and stacktrace only" in new Context {
-    val Seq(e1, e2) = Seq(1, 2).map { i =>
-      new RuntimeException(s"foo $i")
-    }
+    val Array(e1, e2) = Array(1, 2).map { i => new RuntimeException(s"foo $i") }
     val e3: Throwable = new RuntimeException("foo 2")
 
     // do not match on exact string, backtrace hash changes when we change code
-    ExceptionWithContext(e1, Severity.Error).aggregationKey must beMatching("""\Ajava.lang.RuntimeException@[0-9a-f]{8}\z""".r)
+    ExceptionWithContext(e1, Severity.Error).aggregationKey must beMatching(
+      """\Ajava.lang.RuntimeException@[0-9a-f]{4,8}\z""".r
+    )
 
     ExceptionWithContext(e1, Severity.Error).aggregationKey ===
       ExceptionWithContext(e2, Severity.Error).aggregationKey

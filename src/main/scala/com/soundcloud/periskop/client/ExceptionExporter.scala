@@ -2,7 +2,7 @@ package com.soundcloud.periskop.client
 
 import java.time.format.DateTimeFormatter
 
-import com.fasterxml.jackson.core.JsonGenerator
+import com.fasterxml.jackson.core.json.JsonWriteFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 
@@ -11,7 +11,7 @@ class ExceptionExporter(exceptionCollector: ExceptionCollector) {
     .ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
 
   private val jsonMapper = new ObjectMapper()
-    .configure(JsonGenerator.Feature ESCAPE_NON_ASCII, true)
+    .configure(JsonWriteFeature.ESCAPE_NON_ASCII.mappedFeature(), true)
     .registerModule(DefaultScalaModule)
 
   def export: String = {
