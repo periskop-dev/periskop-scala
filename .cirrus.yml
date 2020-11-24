@@ -13,5 +13,5 @@ test_task:
     folder: $HOME/.sbt/boot
     fingerprint_script: cat project/build.properties
     populate_script: sbt update
-  test_script: sbt test
+  test_script: sbt +test
 
