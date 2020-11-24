@@ -5,29 +5,27 @@ import java.util.UUID
 
 import scala.util.hashing.MurmurHash3
 
-/**
-  * Additional HTTP-related context for ExceptionWithContext.
+/** Additional HTTP-related context for ExceptionWithContext.
   */
-case class HttpContext(requestMethod: String,
-                       requestUrl: String,
-                       requestHeaders: Map[String, String],
-                       requestBody: Option[String])
+case class HttpContext(
+    requestMethod: String,
+    requestUrl: String,
+    requestHeaders: Map[String, String],
+    requestBody: Option[String]
+)
 
-/**
-  * Wraps an exception with useful metadata.
+/** Wraps an exception with useful metadata.
   */
-case class ExceptionWithContext
-(
-  throwable: Throwable,
-  severity: Severity,
-  uuid: UUID = UUID.randomUUID,
-  timestamp: ZonedDateTime = ZonedDateTime.now,
-  httpContext: Option[HttpContext] = None
+case class ExceptionWithContext(
+    throwable: Throwable,
+    severity: Severity,
+    uuid: UUID = UUID.randomUUID,
+    timestamp: ZonedDateTime = ZonedDateTime.now,
+    httpContext: Option[HttpContext] = None
 ) {
   val className: String = throwable.getClass.getName
 
-  /**
-    * Key used to group exceptions (and then limit the number of kept exceptions FIFO-style).
+  /** Key used to group exceptions (and then limit the number of kept exceptions FIFO-style).
     *
     * Derived from exception class and backtrace to be as specific as possible, without potentially
     * including information that is different for each exception (e.g. request ids).

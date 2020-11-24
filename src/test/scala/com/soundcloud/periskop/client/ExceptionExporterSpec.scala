@@ -17,7 +17,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
   private def parseJson(s: String) = jsonMapper.readValue(s, classOf[Map[String, Any]])
 
   class FakeException(msg: String, cause: Throwable = null, stackTraceLine: Int = 1)
-    extends RuntimeException(msg, cause) {
+      extends RuntimeException(msg, cause) {
     override def getStackTrace: Array[StackTraceElement] = Array(
       new StackTraceElement("kls", "mthd", "file", stackTraceLine),
       new StackTraceElement("kls", "mthd", "file", stackTraceLine + 1)
@@ -46,8 +46,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
             httpContext = Some(
               HttpContext(
                 requestMethod = "POST",
-                requestHeaders =
-                  Map("User-Agent" -> "Foobrowser", "Accept" -> "text/html"),
+                requestHeaders = Map("User-Agent" -> "Foobrowser", "Accept" -> "text/html"),
                 requestUrl = "http://foo.com/boo",
                 requestBody = Some("body")
               )
@@ -61,8 +60,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
             httpContext = Some(
               HttpContext(
                 requestMethod = "POST",
-                requestHeaders =
-                  Map("User-Agent" -> "Foobrowser", "Accept" -> "text/html"),
+                requestHeaders = Map("User-Agent" -> "Foobrowser", "Accept" -> "text/html"),
                 requestUrl = "http://foo.com/boo",
                 requestBody = None
               )
