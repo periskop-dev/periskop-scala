@@ -7,7 +7,11 @@ val versions = new {
   val collectionCompat = "2.3.0"
 }
 
+organization := "com.soundcloud"
+organizationName := "SoundCloud"
+organizationHomepage := Some(url("https://developers.soundcloud.com/"))
 name := "periskop-scala"
+description := "Scala low level client for Periskop"
 
 libraryDependencies ++= Seq(
   "org.scala-lang.modules" %% "scala-collection-compat" % versions.collectionCompat,
@@ -33,17 +37,13 @@ scalacOptions ++= Seq(
 )
 
 // publishing to maven central
-ThisBuild / organization := "com.soundcloud"
-ThisBuild / organizationName := "SoundCloud"
-ThisBuild / organizationHomepage := Some(url("https://developers.soundcloud.com/"))
-
-ThisBuild / scmInfo := Some(
+scmInfo := Some(
   ScmInfo(
     url("https://github.com/soundcloud/periskop-scala"),
     "scm:git@github.com:soundcloud/periskop-scala.git"
   )
 )
-ThisBuild / developers := List(
+developers := List(
   Developer(
     id    = "jcreixell",
     name  = "Jorge Creixell",
@@ -59,15 +59,13 @@ ThisBuild / developers := List(
 )
 
 usePgpKeyHex("612C04F1EFE66FB7")
-ThisBuild / description := "Scala low level client for Periskop"
-ThisBuild / licenses := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt"))
-ThisBuild / homepage := Some(url("https://github.com/soundcloud/periskop-scala"))
+licenses := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt"))
+homepage := Some(url("https://github.com/soundcloud/periskop-scala"))
 
 // Remove all additional repository other than Maven Central from POM
-ThisBuild / pomIncludeRepository := { _ => false }
-ThisBuild / publishTo := sonatypePublishToBundle.value
-ThisBuild / publishMavenStyle := true
-
+pomIncludeRepository := { _ => false }
+publishTo := sonatypePublishToBundle.value
+publishMavenStyle := true
 
 import ReleaseTransformations._
 
