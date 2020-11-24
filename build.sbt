@@ -2,8 +2,8 @@ lazy val scala212 = "2.12.10"
 lazy val scala213 = "2.13.4"
 
 val versions = new {
-  val specs2 = "4.7.0"
-  val jackson = "2.10.1"
+  val specs2 = "4.10.5"
+  val jackson = "2.11.3"
   val collectionCompat = "2.3.0"
 }
 
