@@ -2,7 +2,7 @@ package com.soundcloud.periskop.client
 
 import java.util.concurrent.ConcurrentHashMap
 import java.util.function.BiFunction
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 
 class ExceptionCollector {
   private val exceptions = new ConcurrentHashMap[String, ExceptionAggregate]
