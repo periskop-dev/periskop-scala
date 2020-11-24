@@ -34,32 +34,38 @@ class ExceptionWithContextSpec extends Specification {
   }
 
   "aggregationKey is using only first 5 lines of stacktrace" in new Context {
-    val e1: Throwable = new TestExceptionWithStacktrace(Array(
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1)
-    ))
+    val e1: Throwable = new TestExceptionWithStacktrace(
+      Array(
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1)
+      )
+    )
 
-    val e2: Throwable = new TestExceptionWithStacktrace(Array(
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 99)
-    ))
+    val e2: Throwable = new TestExceptionWithStacktrace(
+      Array(
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 99)
+      )
+    )
 
-    val e3: Throwable = new TestExceptionWithStacktrace(Array(
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 1),
-      new StackTraceElement("x", "x", "x", 99),
-      new StackTraceElement("x", "x", "x", 1)
-    ))
+    val e3: Throwable = new TestExceptionWithStacktrace(
+      Array(
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 1),
+        new StackTraceElement("x", "x", "x", 99),
+        new StackTraceElement("x", "x", "x", 1)
+      )
+    )
 
     ExceptionWithContext(e1, Severity.Error).aggregationKey ===
       ExceptionWithContext(e2, Severity.Error).aggregationKey
