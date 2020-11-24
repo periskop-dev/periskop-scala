@@ -4,11 +4,13 @@ lazy val scala213 = "2.13.4"
 val versions = new {
   val specs2 = "4.7.0"
   val jackson = "2.10.1"
+  val collectionCompat = "2.3.0"
 }
 
 name := "periskop-scala"
 
 libraryDependencies ++= Seq(
+  "org.scala-lang.modules" %% "scala-collection-compat" % versions.collectionCompat,
   "com.fasterxml.jackson.core" % "jackson-databind" % versions.jackson,
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % versions.jackson,
   "org.specs2" %% "specs2-core" % versions.specs2 % "test",
@@ -16,6 +18,19 @@ libraryDependencies ++= Seq(
 )
 crossScalaVersions := Seq(scala212, scala213)
 scalaVersion := scala213
+
+scalacOptions ++= Seq(
+  "-deprecation",
+  "-encoding",
+  "UTF-8",
+  "-explaintypes",
+  "-feature",
+  "-unchecked",
+  "-Xfatal-warnings",
+  "-Xlint",
+  "-Ywarn-dead-code",
+  "-Ywarn-value-discard"
+)
 
 // publishing to maven central
 ThisBuild / organization := "com.soundcloud"
