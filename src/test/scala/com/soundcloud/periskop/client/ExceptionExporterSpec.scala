@@ -103,7 +103,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
           |      "aggregation_key": "${exceptionAggregates(0).latestExceptions.head.aggregationKey}",
           |      "total_count": 3,
           |      "severity": "error",
-          |      "createdAt": "2018-01-02T11:22:33.000Z",
+          |      "created_at": "2018-01-02T11:22:33.000Z",
           |      "latest_errors": [
           |        {
           |          "error": {
@@ -188,7 +188,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
           |      "aggregation_key": "${exceptionAggregates(1).latestExceptions.head.aggregationKey}",
           |      "total_count": 1,
           |      "severity": "error",
-          |      "createdAt": "2018-01-02T11:22:33.000Z",
+          |      "created_at": "2018-01-02T11:22:33.000Z",
           |      "latest_errors": [
           |        {
           |          "error": {
