@@ -54,6 +54,6 @@ The exported exceptions need to be exposed via an HTTP endpoint in order for Per
 See [Periskop Documentation](https://github.com/soundcloud/periskop) for more information on how to configure a
 Periskop server.
 
-## Contributing
+## Contributing / Release a new version
 
-Please see [CONTRIBUTING.md](CONTRIBUTING.md)
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) and [RELEASE.md](RELEASE.md)
