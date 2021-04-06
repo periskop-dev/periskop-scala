@@ -6,6 +6,8 @@ To publish a release, two sets of credentials are necessary:
 an account for `oss.sonatype.org`,
 and a pgp key (and associated passphrase) for signing the artifacts.
 
+(If you work at SoundCloud, these crendentials can be found on a shared folder within LastPass).
+
 For the release process to succeed,
 you need to place the sonatype credentials in `~/.sbt/1.0/credentials.sbt`:
 
