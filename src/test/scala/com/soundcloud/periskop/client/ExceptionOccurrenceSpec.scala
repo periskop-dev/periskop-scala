@@ -85,7 +85,11 @@ class ExceptionOccurrenceSpec extends Specification {
     trait Context extends Scope {}
 
     "UUID values are different for each instance" in new Context {
-      ExceptionMessage("key", "message", Severity.Info).uuid !=== ExceptionMessage("key2", "message2", Severity.Info).uuid
+      ExceptionMessage("key", "message", Severity.Info).uuid !=== ExceptionMessage(
+        "key2",
+        "message2",
+        Severity.Info
+      ).uuid
     }
   }
 }
