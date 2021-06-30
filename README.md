@@ -26,14 +26,31 @@ val exceptionCollector = new ExceptionCollector
 Collect some exceptions:
 
 ```scala
-// Without Context
+// An Exception Without Context
 exceptionCollector.add(new RuntimeException("ups!"))
 
-// With Context
+// A Message Without Context
+exceptionCollector.addMessage("key", "some message")
+
+// An Exception With Context
 exceptionCollector.addWithContext(
   ExceptionWithContext(
     throwable = new RuntimeException("another ups!"),
     severity = Severity.Warning,
+    httpContext = Some(HttpContext(
+      requestMethod = "GET",
+      requestUrl = "http://example.com/path?foo=bar",
+      requestHeaders = Map("Accept" -> "text/plain"),
+      requestBody = Some("body")
+    )))
+)
+
+// A Message With Context
+exceptionCollector.addWithContext(
+  ExceptionMessage(
+    aggregationKey = "key2",
+    message = "some other message",
+    severity = Severity.Info,
     httpContext = Some(HttpContext(
       requestMethod = "GET",
       requestUrl = "http://example.com/path?foo=bar",
