@@ -109,12 +109,15 @@ class ExceptionExporterSpec extends Specification with Mockito {
     )
 
     val collector = smartMock[ExceptionCollector]
+    val targetUuid = UUID.randomUUID()
     when(collector.getExceptionAggregates).thenReturn(exceptionAggregates)
+    when(collector.uuid).thenReturn(targetUuid)
 
     val exporter = new ExceptionExporter(collector)
 
     parseJson(exporter.export) ==== parseJson(
       s"""|{
+          | "target_uuid": "$targetUuid",
           |  "aggregated_errors": [
           |    {
           |      "aggregation_key": "${exceptionAggregates(0).latestExceptions.head.aggregationKey}",
