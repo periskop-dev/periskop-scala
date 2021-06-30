@@ -24,10 +24,10 @@ class ExceptionAggregateSpec extends Specification {
 
     a.totalCount ==== 3
     a.latestExceptions.length ==== 3
-    a.latestExceptions.head.throwable ==== e
+    a.latestExceptions.head.asInstanceOf[ExceptionWithContext].throwable ==== e
     a.latestExceptions.head.severity ==== Severity.Error
 
-    a.latestExceptions.last.throwable ==== a.latestExceptions.head.throwable
+    a.latestExceptions.last.asInstanceOf[ExceptionWithContext].throwable ==== a.latestExceptions.head.asInstanceOf[ExceptionWithContext].throwable
     a.latestExceptions.last !=== a.latestExceptions.head
   }
 
@@ -45,8 +45,8 @@ class ExceptionAggregateSpec extends Specification {
 
     a.totalCount ==== 15
     a.latestExceptions.length ==== 10
-    a.latestExceptions.head.throwable.getMessage ==== "foo 6"
-    a.latestExceptions.last.throwable.getMessage ==== "foo 15"
+    a.latestExceptions.head.asInstanceOf[ExceptionWithContext].throwable.getMessage ==== "foo 6"
+    a.latestExceptions.last.asInstanceOf[ExceptionWithContext].throwable.getMessage ==== "foo 15"
   }
 
   "throws if the aggregation key does not match" in new Context {

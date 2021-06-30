@@ -9,13 +9,19 @@ class ExceptionCollector {
 
   /** Collect an exception without providing an HTTP context.
     */
-  def add(throwable: Throwable, severity: Severity = Severity.Error): Unit = addExceptionWithContext(
+  def add(throwable: Throwable, severity: Severity = Severity.Error): Unit = addExceptionOccurrence(
     ExceptionWithContext(throwable, severity)
+  )
+
+  /** Collect a message without providing an HTTP context.
+    */
+  def addMessage(key: String, message: String, severity: Severity = Severity.Info): Unit = addExceptionOccurrence(
+    ExceptionMessage(key, message, severity)
   )
 
   /** Collect an exception providing an HTTP context.
     */
-  def addWithContext(exceptionWithContext: ExceptionWithContext): Unit = addExceptionWithContext(exceptionWithContext)
+  def addWithContext(ExceptionOccurrence: ExceptionOccurrence): Unit = addExceptionOccurrence(ExceptionOccurrence)
 
   /** Get a dump of all exception aggregates.
     */
@@ -23,7 +29,7 @@ class ExceptionCollector {
     exceptions.values.asScala.toSeq
   }
 
-  private def addExceptionWithContext(exception: ExceptionWithContext): Unit = {
+  private def addExceptionOccurrence(exception: ExceptionOccurrence): Unit = {
     exceptions.compute(
       exception.aggregationKey,
       new BiFunction[String, ExceptionAggregate, ExceptionAggregate] {
