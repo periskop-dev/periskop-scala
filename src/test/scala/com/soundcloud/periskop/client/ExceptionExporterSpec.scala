@@ -28,9 +28,11 @@ class ExceptionExporterSpec extends Specification with Mockito {
     val uuid1 = UUID.fromString("c3c24195-27ae-4455-ba5a-7b504a7699a4")
     val uuid2 = UUID.fromString("f12feecd-7518-46c3-88a6-38d57804e81a")
     val uuid3 = UUID.fromString("ceeefdf5-cdee-4f1b-b139-b2c739d16dcf")
+    val uuid4 = UUID.fromString("e42e2212-fdf9-4550-95bd-0b9b4996904c")
 
     val timestamp1 = ZonedDateTime.parse("2018-01-02T11:22:33+00:00")
     val timestamp2 = ZonedDateTime.parse("2018-01-02T11:22:55+00:00")
+    val timestamp3 = ZonedDateTime.parse("2018-01-03T11:22:55+00:00")
 
     val exceptionAggregates: Seq[ExceptionAggregate] = Seq(
       ExceptionAggregate(
@@ -85,6 +87,21 @@ class ExceptionExporterSpec extends Specification with Mockito {
             severity = Severity.Error,
             uuid = uuid3,
             timestamp = timestamp1,
+            httpContext = None
+          )
+        )
+      ),
+      ExceptionAggregate(
+        totalCount = 1,
+        severity = Severity.Info,
+        createdAt = timestamp3,
+        latestExceptions = Queue(
+          ExceptionMessage(
+            severity = Severity.Info,
+            message = "some info",
+            aggregationKey = "some-key",
+            uuid = uuid4,
+            timestamp = timestamp3,
             httpContext = None
           )
         )
@@ -203,6 +220,23 @@ class ExceptionExporterSpec extends Specification with Mockito {
           |          "severity": "error",
           |          "uuid": "ceeefdf5-cdee-4f1b-b139-b2c739d16dcf",
           |          "timestamp": "2018-01-02T11:22:33.000Z",
+          |          "http_context": null
+          |        }
+          |      ]
+          |    },
+          |    {
+          |      "aggregation_key": "some-key",
+          |      "total_count": 1,
+          |      "severity": "info",
+          |      "created_at": "2018-01-03T11:22:55.000Z",
+          |      "latest_errors": [
+          |        {
+          |          "error": {
+          |            "message": "some info"
+          |          },
+          |          "severity": "info",
+          |          "uuid": "e42e2212-fdf9-4550-95bd-0b9b4996904c",
+          |          "timestamp": "2018-01-03T11:22:55.000Z",
           |          "http_context": null
           |        }
           |      ]

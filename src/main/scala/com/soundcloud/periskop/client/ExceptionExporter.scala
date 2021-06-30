@@ -22,11 +22,15 @@ class ExceptionExporter(exceptionCollector: ExceptionCollector) {
     jsonMapper.writeValueAsString(payload)
   }
 
-  private def jsonException(t: Throwable): Map[String, Any] = Map(
+  private def jsonExceptionWithContext(t: Throwable): Map[String, Any] = Map(
     "class" -> t.getClass.getName,
     "message" -> t.getMessage,
     "stacktrace" -> t.getStackTrace.map(_.toString),
-    "cause" -> Option(t.getCause).map(jsonException)
+    "cause" -> Option(t.getCause).map(jsonExceptionWithContext)
+  )
+
+  private def jsonExceptionMessage(m: String): Map[String, Any] = Map(
+    "message" -> m
   )
 
   private def jsonHttpContext(httpContext: HttpContext): Map[String, Any] =
@@ -37,13 +41,21 @@ class ExceptionExporter(exceptionCollector: ExceptionCollector) {
       "request_body" -> httpContext.requestBody
     )
 
-  private def jsonErrorWithContext(e: ExceptionWithContext): Map[String, Any] = Map(
-    "error" -> jsonException(e.throwable),
-    "severity" -> Severity.toString(e.severity),
-    "uuid" -> e.uuid.toString,
-    "timestamp" -> e.timestamp.format(rfc3339TimeFormat),
-    "http_context" -> e.httpContext.map(jsonHttpContext)
-  )
+  private def jsonErrorWithContext(e: ExceptionOccurrence): Map[String, Any] = {
+    val error = e match {
+      case ExceptionWithContext(throwable, _, _, _, _) => jsonExceptionWithContext(throwable)
+      case ExceptionMessage(_, message, _, _, _, _) => jsonExceptionMessage(message)
+      case _ => Map.empty
+    }
+
+    Map(
+      "error" -> error,
+      "severity" -> Severity.toString(e.severity),
+      "uuid" -> e.uuid.toString,
+      "timestamp" -> e.timestamp.format(rfc3339TimeFormat),
+      "http_context" -> e.httpContext.map(jsonHttpContext)
+    )
+  }
 
   private def jsonAggregatedErrors(aggregate: ExceptionAggregate): Map[String, Any] = Map(
     "aggregation_key" -> aggregate.aggregationKey,
