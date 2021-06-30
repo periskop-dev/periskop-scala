@@ -3,9 +3,11 @@ package com.soundcloud.periskop.client
 import java.util.concurrent.ConcurrentHashMap
 import java.util.function.BiFunction
 import scala.jdk.CollectionConverters._
+import java.util.UUID
 
 class ExceptionCollector {
   private val exceptions = new ConcurrentHashMap[String, ExceptionAggregate]
+  val uuid = UUID.randomUUID
 
   /** Collect an exception without providing an HTTP context.
     */

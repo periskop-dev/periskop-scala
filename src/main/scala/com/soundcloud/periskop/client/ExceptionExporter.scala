@@ -66,7 +66,8 @@ class ExceptionExporter(exceptionCollector: ExceptionCollector) {
   )
 
   private def jsonResult(exceptionAggregates: Seq[ExceptionAggregate]): Map[String, Any] = Map(
-    "aggregated_errors" -> exceptionAggregates.map(jsonAggregatedErrors)
+    "aggregated_errors" -> exceptionAggregates.map(jsonAggregatedErrors),
+    "target_uuid" -> exceptionCollector.uuid
   )
 
 }
