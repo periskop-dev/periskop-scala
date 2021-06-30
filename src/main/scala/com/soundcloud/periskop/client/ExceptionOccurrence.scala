@@ -2,7 +2,6 @@ package com.soundcloud.periskop.client
 
 import java.time.ZonedDateTime
 import java.util.UUID
-
 import scala.util.hashing.MurmurHash3
 
 /** Additional HTTP-related context for ExceptionWithContext.
@@ -36,7 +35,6 @@ case class ExceptionWithContext(
   val className: String = throwable.getClass.getName
   val message: String = throwable.getMessage()
   val exceptionThrowable = Some(throwable)
-
 
   /** Key used to group exceptions (and then limit the number of kept exceptions FIFO-style).
     *

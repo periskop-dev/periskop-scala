@@ -42,13 +42,13 @@ class ExceptionExporter(exceptionCollector: ExceptionCollector) {
     )
 
   private def jsonErrorWithContext(e: ExceptionOccurrence): Map[String, Any] = {
-      val error = e match {
-        case ExceptionWithContext(throwable,_,_,_,_) => jsonExceptionWithContext(throwable)
-        case ExceptionMessage(_, message, _, _, _, _) => jsonExceptionMessage(message)
-        case _=> Map.empty
-      }
+    val error = e match {
+      case ExceptionWithContext(throwable, _, _, _, _) => jsonExceptionWithContext(throwable)
+      case ExceptionMessage(_, message, _, _, _, _) => jsonExceptionMessage(message)
+      case _ => Map.empty
+    }
 
-      Map(
+    Map(
       "error" -> error,
       "severity" -> Severity.toString(e.severity),
       "uuid" -> e.uuid.toString,

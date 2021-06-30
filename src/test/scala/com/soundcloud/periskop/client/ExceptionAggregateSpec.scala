@@ -27,7 +27,9 @@ class ExceptionAggregateSpec extends Specification {
     a.latestExceptions.head.asInstanceOf[ExceptionWithContext].throwable ==== e
     a.latestExceptions.head.severity ==== Severity.Error
 
-    a.latestExceptions.last.asInstanceOf[ExceptionWithContext].throwable ==== a.latestExceptions.head.asInstanceOf[ExceptionWithContext].throwable
+    a.latestExceptions.last.asInstanceOf[ExceptionWithContext].throwable ==== a.latestExceptions.head
+      .asInstanceOf[ExceptionWithContext]
+      .throwable
     a.latestExceptions.last !=== a.latestExceptions.head
   }
 
