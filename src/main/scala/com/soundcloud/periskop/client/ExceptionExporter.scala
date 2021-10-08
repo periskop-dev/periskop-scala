@@ -1,12 +1,14 @@
 package com.soundcloud.periskop.client
 
-import java.time.format.DateTimeFormatter
-
 import com.fasterxml.jackson.core.json.JsonWriteFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
+import scalaj.http._
+
+import java.time.format.DateTimeFormatter
 
 class ExceptionExporter(exceptionCollector: ExceptionCollector) {
+
   private val rfc3339TimeFormat = DateTimeFormatter
     .ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
 
@@ -20,6 +22,10 @@ class ExceptionExporter(exceptionCollector: ExceptionCollector) {
     )
 
     jsonMapper.writeValueAsString(payload)
+  }
+
+  def pushToGateway(addr: String): HttpResponse[String] = {
+    Http(s"$addr/errors").postData(export).asString
   }
 
   private def jsonExceptionWithContext(t: Throwable): Map[String, Any] = Map(
