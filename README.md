@@ -74,7 +74,7 @@ Periskop server.
 ### Using push gateway
 
 You can also use [pushgateway](https://github.com/soundcloud/periskop-pushgateway) in case you want to push your metrics 
-instead of using pull method. Use only in case you really need it (e.g a batch job) as it would degrade the performance 
+instead of using pull method. Use only in case you really need it (e.g a batch job) as it could degrade the performance
 of your application. In the following example, we assume that we deployed an instance of periskop-pushgateway 
 on `http://localhost:6767`:
 
