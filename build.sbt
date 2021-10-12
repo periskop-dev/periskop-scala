@@ -5,6 +5,7 @@ val versions = new {
   val specs2 = "4.10.5"
   val jackson = "2.11.3"
   val collectionCompat = "2.3.0"
+  val scalaj = "2.4.2"
 }
 
 organization := "com.soundcloud"
@@ -14,6 +15,7 @@ name := "periskop-scala"
 description := "Scala low level client for Periskop"
 
 libraryDependencies ++= Seq(
+  "org.scalaj" %% "scalaj-http" % versions.scalaj,
   "org.scala-lang.modules" %% "scala-collection-compat" % versions.collectionCompat,
   "com.fasterxml.jackson.core" % "jackson-databind" % versions.jackson,
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % versions.jackson,
