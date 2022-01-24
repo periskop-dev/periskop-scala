@@ -1,4 +1,4 @@
-package com.soundcloud.periskop.client
+package io.github.periskopdev.periskop.client
 
 import java.time.ZonedDateTime
 import java.util.UUID
@@ -127,14 +127,14 @@ class ExceptionExporterSpec extends Specification with Mockito {
           |      "latest_errors": [
           |        {
           |          "error": {
-          |            "class": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException",
+          |            "class": "io.github.periskopdev.periskop.client.ExceptionExporterSpec$$FakeException",
           |            "message": "foo1",
           |            "stacktrace": [
           |              "kls.mthd(file:1)",
           |              "kls.mthd(file:2)"
           |            ],
           |            "cause": {
-          |              "class": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException",
+          |              "class": "io.github.periskopdev.periskop.client.ExceptionExporterSpec$$FakeException",
           |              "message": "foo1parent",
           |              "stacktrace": [
           |                "kls.mthd(file:1)",
@@ -158,14 +158,14 @@ class ExceptionExporterSpec extends Specification with Mockito {
           |        },
           |        {
           |          "error": {
-          |            "class": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException",
+          |            "class": "io.github.periskopdev.periskop.client.ExceptionExporterSpec$$FakeException",
           |            "message": "foo1",
           |            "stacktrace": [
           |              "kls.mthd(file:1)",
           |              "kls.mthd(file:2)"
           |            ],
           |            "cause": {
-          |              "class": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException",
+          |              "class": "io.github.periskopdev.periskop.client.ExceptionExporterSpec$$FakeException",
           |              "message": "foo1parent",
           |              "stacktrace": [
           |                "kls.mthd(file:1)",
@@ -189,7 +189,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
           |        },
           |        {
           |          "error": {
-          |            "class": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException",
+          |            "class": "io.github.periskopdev.periskop.client.ExceptionExporterSpec$$FakeException",
           |            "message": "foo2",
           |            "stacktrace": [
           |              "kls.mthd(file:1)",
@@ -212,7 +212,7 @@ class ExceptionExporterSpec extends Specification with Mockito {
           |      "latest_errors": [
           |        {
           |          "error": {
-          |            "class": "com.soundcloud.periskop.client.ExceptionExporterSpec$$FakeException",
+          |            "class": "io.github.periskopdev.periskop.client.ExceptionExporterSpec$$FakeException",
           |            "message": "bar1",
           |            "stacktrace": [
           |              "kls.mthd(file:42)",

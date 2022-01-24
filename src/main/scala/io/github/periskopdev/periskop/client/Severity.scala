@@ -1,4 +1,4 @@
-package com.soundcloud.periskop.client
+package io.github.periskopdev.periskop.client
 
 sealed trait Severity
 

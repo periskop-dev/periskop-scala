@@ -1,4 +1,4 @@
-package com.soundcloud.periskop.client
+package io.github.periskopdev.periskop.client
 
 import com.fasterxml.jackson.core.json.JsonWriteFeature
 import com.fasterxml.jackson.databind.ObjectMapper

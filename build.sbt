@@ -8,9 +8,9 @@ val versions = new {
   val scalaj = "2.4.2"
 }
 
-organization := "com.soundcloud"
-organizationName := "SoundCloud"
-organizationHomepage := Some(url("https://developers.soundcloud.com/"))
+organization := "io.github.periskop-dev"
+organizationName := "Periskop"
+organizationHomepage := Some(url("https://periskop.io/"))
 name := "periskop-scala"
 description := "Scala low level client for Periskop"
 
@@ -41,8 +41,8 @@ scalacOptions ++= Seq(
 // publishing to maven central
 scmInfo := Some(
   ScmInfo(
-    url("https://github.com/soundcloud/periskop-scala"),
-    "scm:git@github.com:soundcloud/periskop-scala.git"
+    url("https://github.com/periskop-dev/periskop-scala"),
+    "scm:git@github.com:periskop-dev/periskop-scala.git"
   )
 )
 developers := List(
@@ -53,37 +53,23 @@ developers := List(
     url   = url("https://github.com/jcreixell")
   ),
   Developer(
-    id    = "dziemba",
-    name  = "Niko Dziemba",
-    email = "niko.dziemba@soundcloud.com",
-    url   = url("https://github.com/dziemba")
+    id    = "marctc",
+    name  = "Marc Tuduri",
+    email = "marctc@protonmail.com",
+    url   = url("https://github.com/marctc")
   )
 )
 
-usePgpKeyHex("612C04F1EFE66FB7")
 licenses := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt"))
-homepage := Some(url("https://github.com/soundcloud/periskop-scala"))
+homepage := Some(url("https://github.com/periskop-dev/periskop-scala"))
 
 // Remove all additional repository other than Maven Central from POM
 pomIncludeRepository := { _ => false }
-publishTo := sonatypePublishToBundle.value
+publishTo := {
+  val nexus = "https://s01.oss.sonatype.org/"
+  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
 publishMavenStyle := true
-
-import ReleaseTransformations._
-
-releaseCrossBuild := true
-releaseProcess := Seq[ReleaseStep](
-  checkSnapshotDependencies,
-  inquireVersions,
-  runClean,
-  runTest,
-  setReleaseVersion,
-  commitReleaseVersion,
-  tagRelease,
-  // For non cross-build projects, use releaseStepCommand("publishSigned")
-  releaseStepCommandAndRemaining("+publishSigned"),
-  releaseStepCommand("sonatypeBundleRelease"),
-  setNextVersion,
-  commitNextVersion,
-  pushChanges
-)
+publishConfiguration := publishConfiguration.value.withOverwrite(true)
+publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(true)

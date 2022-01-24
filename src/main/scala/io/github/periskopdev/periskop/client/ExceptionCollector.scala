@@ -1,4 +1,4 @@
-package com.soundcloud.periskop.client
+package io.github.periskopdev.periskop.client
 
 import java.util.concurrent.ConcurrentHashMap
 import java.util.function.BiFunction

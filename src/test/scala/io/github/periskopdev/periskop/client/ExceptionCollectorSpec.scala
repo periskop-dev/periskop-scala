@@ -1,4 +1,4 @@
-package com.soundcloud.periskop.client
+package io.github.periskopdev.periskop.client
 
 import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification

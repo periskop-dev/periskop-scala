@@ -1,9 +1,9 @@
 # Periskop Scala Client
 
-[![Build Status](https://api.cirrus-ci.com/github/soundcloud/periskop-scala.svg)](https://cirrus-ci.com/github/soundcloud/periskop-scala)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.soundcloud/periskop-scala_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.soundcloud/periskop-scala_2.12)
+[![Build Status](https://api.cirrus-ci.com/github/periskop-dev/periskop-scala.svg)](https://cirrus-ci.com/github/periskop-dev/periskop-scala)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.periskopdev/periskop-scala_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.periskopdev/periskop-scala_2.12)
 
-[Periskop](https://github.com/soundcloud/periskop) requires collecting and aggregating exceptions on the client side,
+[Periskop](https://github.com/periskop-dev/periskop) requires collecting and aggregating exceptions on the client side,
 as well as exposing them via an HTTP endpoint using a well defined format.
 
 This library provides low level collection and rendering capabilities. Higher level libraries can be built be
@@ -14,7 +14,7 @@ for better integration with specific libraries and frameworks.
 Add `periskop-scala` to your SBT dependencies:
 
 ```scala
-libraryDependencies += "com.soundcloud" %% "periskop-scala" % "<version>"
+libraryDependencies += "io.github.periskop-dev" %% "periskop-scala" % "<version>"
 ````
 
 Create an exception collector instance:
@@ -68,12 +68,12 @@ exporter.export
 ```
 
 The exported exceptions need to be exposed via an HTTP endpoint in order for Periskop to be able to scrape them.
-See [Periskop Documentation](https://github.com/soundcloud/periskop) for more information on how to configure a
+See [Periskop Documentation](https://github.com/periskop-dev/periskop) for more information on how to configure a
 Periskop server.
 
 ### Using push gateway
 
-You can also use [pushgateway](https://github.com/soundcloud/periskop-pushgateway) in case you want to push your metrics 
+You can also use [pushgateway](https://github.com/periskop-dev/periskop-pushgateway) in case you want to push your metrics 
 instead of using pull method. Use only in case you really need it (e.g a batch job) as it could degrade the performance
 of your application. In the following example, we assume that we deployed an instance of periskop-pushgateway 
 on `http://localhost:6767`:
