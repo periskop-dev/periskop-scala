@@ -85,6 +85,6 @@ exporter.pushToGateway("http://localhost:6767")
 ```
 
 
-## Contributing / Release a new version
+## Contributing
 
-Please see [CONTRIBUTING.md](CONTRIBUTING.md) and [RELEASE.md](RELEASE.md)
+Please see [CONTRIBUTING.md](CONTRIBUTING.md).
